@@ -1,9 +1,10 @@
 # disable pts dts check
 
-原 ffmpeg `libavformat/mux.c` 中会检查
+原 ffmpeg `libavformat/mux.c` 和 `libavformat/flvenc.c` 中会检查
 
 - dts 是否单调递增
 - pts 是否小于 dts
+- dts 小于 `flv->delay`
 
 如果遇到以上任一情况，程序就会强制退出。
 
